@@ -1,0 +1,6 @@
+@Muma.Api_HostAddress = http://localhost:5232
+
+GET {{Muma.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

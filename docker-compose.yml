@@ -1,0 +1,30 @@
+services:
+  muma-api:
+    container_name: muma-api
+    build:
+      context: ./backend/Muma/
+      dockerfile: ./Muma.Api/Dockerfile
+    environment:
+      - ConnectionStrings__MumaDB=Host=muma-db;Port=5432;Database=Muma;Username=postgres;Password=MumaBootcamp123
+    ports:
+      - "${API_PORT}:8080"
+    depends_on:
+      - muma-db
+
+  muma-db:
+    container_name: muma-db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: MumaBootcamp123
+      POSTGRES_DB: Muma
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
