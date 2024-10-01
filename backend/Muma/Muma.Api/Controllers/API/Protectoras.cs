@@ -29,6 +29,7 @@ namespace Muma.Api.Controllers.API
             return Ok(protectoras);
         }
 
+        [AllowAnonymous]
         [HttpPost("registro")]
         public async Task<IActionResult> RegistrarProtectora([FromBody]RegistroProtectoraDto input)
         { 
