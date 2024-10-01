@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Muma.Api.JWT;
+using Muma.Api.Swagger;
 using Muma.Application;
 using Muma.Infrastructure;
 using Muma.Infrastructure.Data.Seeder;
@@ -27,7 +28,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
 
 builder.Services
     .AddMumaApplication()
