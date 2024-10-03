@@ -48,6 +48,14 @@ public static class SeedCommands
                 piso VARCHAR(20),
                 departamento VARCHAR(20),
                 cantidadDeMascotas INT NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS ""Mascoteros"" (
+                id SERIAL PRIMARY KEY,
+                usuarioAsociado INTEGER NOT NULL,
+                FOREIGN KEY (usuarioAsociado) REFERENCES ""Usuarios"",
+                nombre VARCHAR(300) NOT NULL,
+                email VARCHAR(100) NOT NULL
             );";
 
     public static string SeedTipoRegistros => @"

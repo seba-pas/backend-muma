@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using Muma.Application.Common;
 using Muma.Domain.Entities;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Muma.Infrastructure.Data.Persistence;
 
@@ -23,5 +21,6 @@ public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Ciudad> Ciudades { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Protectora> Protectoras { get; set; }
+    public DbSet<Mascotero> Mascoteros { get; set; }
     DatabaseFacade IApplicationDbContext.Database { get => base.Database; set { } }
 }
