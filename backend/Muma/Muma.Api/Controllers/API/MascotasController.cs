@@ -22,12 +22,19 @@ public class MascotasController(MascotaService mascotaService, UsuarioService us
         if (validationResult != null)
             return BadRequest(validationResult);
 
-        var result = await _mascotaService.CrearMascota(input);
-        if (result.Success)
+        try
         {
-            return Ok(new { id = result.GetResult().Id, nombre = result.GetResult().Nombre });
+            var result = await _mascotaService.CrearMascota(input);
+            if (result.Success)
+            {
+                return Ok(new { id = result.GetResult().Id, nombre = result.GetResult().Nombre });
+            }
+            return BadRequest(result.GetErrorsList());
         }
-        return BadRequest(result.GetErrorsList());
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = ex.Message, innerException = ex.InnerException?.Message });
+        }
     }
 
     [HttpGet("{id}")]
