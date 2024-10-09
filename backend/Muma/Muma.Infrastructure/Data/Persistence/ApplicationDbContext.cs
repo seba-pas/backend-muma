@@ -22,5 +22,6 @@ public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Protectora> Protectoras { get; set; }
     public DbSet<Mascotero> Mascoteros { get; set; }
+    public DbSet<Mascota> Mascotas { get; set; }
     DatabaseFacade IApplicationDbContext.Database { get => base.Database; set { } }
 }

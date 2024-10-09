@@ -213,5 +213,8 @@ namespace Muma.Application.Protectoras
             return result;
 
         }
+
+        public async Task<Protectora?> GetProtectoraByUsuarioAsociadoId(int usuarioAsociadoId) => await context.Protectoras
+                .FirstOrDefaultAsync(p => p.UsuarioAsociadoId == usuarioAsociadoId);
     }
 }
