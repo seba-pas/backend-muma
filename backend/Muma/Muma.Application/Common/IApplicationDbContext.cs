@@ -12,6 +12,7 @@ public interface IApplicationDbContext
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Protectora> Protectoras { get; set; }
     public DbSet<Mascotero> Mascoteros { get; set; }
+    public DbSet<Mascota> Mascotas { get; set; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
     public DatabaseFacade Database { get; set; }

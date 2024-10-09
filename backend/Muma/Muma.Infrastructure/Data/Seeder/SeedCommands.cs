@@ -56,7 +56,31 @@ public static class SeedCommands
                 FOREIGN KEY (usuarioAsociado) REFERENCES ""Usuarios"",
                 nombre VARCHAR(300) NOT NULL,
                 email VARCHAR(100) NOT NULL
-            );";
+            );
+
+            CREATE TABLE IF NOT EXISTS ""Mascotas"" (
+                id SERIAL PRIMARY KEY,
+                nombre VARCHAR(100) NOT NULL,
+                tipoAnimal VARCHAR(50) NOT NULL,
+                raza VARCHAR(100),
+                descripcion VARCHAR(300),
+                sexo VARCHAR(10) NOT NULL,
+                tamano VARCHAR(20) NOT NULL,
+                ciudad VARCHAR(100) NOT NULL,
+                mesAnioNacimiento VARCHAR(7) NOT NULL,
+                edad INTEGER NOT NULL,
+                protectoraId INTEGER NOT NULL,
+                FOREIGN KEY (protectoraId) REFERENCES ""Protectoras"",
+                fotos TEXT[] NOT NULL,
+                baja BOOLEAN NOT NULL DEFAULT FALSE,
+                motivobaja VARCHAR(300),
+                descripcionbaja VARCHAR(300),
+                fechaadopcion DATE,
+                idmascotero INTEGER,
+                temperamentoconanimales VARCHAR(100),
+                temperamentoconpersonas VARCHAR(100)
+            );
+          ";
 
     public static string SeedTipoRegistros => @"
             DO $$

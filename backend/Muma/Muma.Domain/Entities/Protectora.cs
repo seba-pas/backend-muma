@@ -30,5 +30,7 @@
 
         public Ciudad Ciudad { get; set; }
 
+        public List<Mascota> Mascotas { get; set; }
+        public Usuario UsuarioAsociado { get; set; }
     }
 }
