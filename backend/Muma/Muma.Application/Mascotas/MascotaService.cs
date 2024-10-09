@@ -15,8 +15,7 @@ public class MascotaService(IApplicationDbContext context)
 
         try
         {
-            DateTime fechaNacimiento;
-            if (DateTime.TryParseExact(input.MesAnioNacimiento + "-01", "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out fechaNacimiento))
+            if (DateTime.TryParseExact(input.MesAnioNacimiento + "-01", "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
             {
                 var edad = DateTime.Now.Year - fechaNacimiento.Year;
                 if (DateTime.Now.Month < fechaNacimiento.Month)
