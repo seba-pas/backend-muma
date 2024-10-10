@@ -15,6 +15,13 @@ public class MascotaService(IApplicationDbContext context)
 
         try
         {
+            var protectoraExiste = await _context.Protectoras.AnyAsync(p => p.Id == input.ProtectoraId);
+            if (!protectoraExiste)
+            {
+                result.AddError("Protectora inválida.");
+                return result;
+            }
+
             if (DateTime.TryParseExact(input.MesAnioNacimiento + "-01", "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
             {
                 var edad = DateTime.Now.Year - fechaNacimiento.Year;
